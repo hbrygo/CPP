@@ -1,11 +1,9 @@
 SRCS	=	src/main.cpp \
-			src/zombieHorde.cpp \
-			src/Zombie.cpp
+			src/Fixed.cpp
 
 OBJS	= ${SRCS:.cpp=.o}
 INCS	= includes
-NAME	= zombieHorde
-
+NAME	= fixed
 CC		= c++
 RM		= rm -rf
 CFLAGS	= -Wall -Wextra -Werror -g -std=c++98

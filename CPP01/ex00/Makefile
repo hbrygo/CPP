@@ -1,7 +1,7 @@
-SRCS	=	src/main.cpp \
-			src/newZombie.cpp \
-			src/randomChump.cpp \
-			src/Zombie.cpp
+SRCS	=	sources/main.cpp \
+			sources/newZombie.cpp \
+			sources/randomChump.cpp \
+			sources/Zombie.cpp
 
 OBJS	= ${SRCS:.cpp=.o}
 INCS	= includes

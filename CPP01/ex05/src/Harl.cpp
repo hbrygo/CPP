@@ -18,6 +18,6 @@ void	Harl::complain(std::string level)
 	for (int i = 0; i < 4; i++)
 	{
 		if (comp[i] == level)
-			(this->*(Harl::_fct[i]))();
+			(this->*(_fct[i]))();
 	}
 }
