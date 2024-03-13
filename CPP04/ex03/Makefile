@@ -1,10 +1,8 @@
-SRCS	=	src/main.cpp \
-			src/Bureaucrat.cpp \
-			src/Form.cpp
+SRCS	=	
 
 OBJS	= ${SRCS:.cpp=.o}
 INCS	= includes
-NAME	= Form
+NAME	= AMateria
 CC		= c++
 RM		= rm -rf
 CFLAGS	= -Wall -Wextra -Werror -g -std=c++98

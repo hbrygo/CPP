@@ -1,6 +1,6 @@
 SRCS	=	src/main.cpp \
 			src/Bureaucrat.cpp \
-			src/Form.cpp
+			src/AForm.cpp
 
 OBJS	= ${SRCS:.cpp=.o}
 INCS	= includes

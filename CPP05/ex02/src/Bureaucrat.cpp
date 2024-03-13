@@ -55,7 +55,7 @@ void Bureaucrat::gradeUp(){
 	std::cout << this->_name << " grade up" << std::endl;
 }
 
-void Bureaucrat::signForm( Form f ) const{
+void Bureaucrat::signForm( AForm& f ) const{
 	if (f.getSigned() == 1)
 		std::cout << this->_name << " signed " << f.getName() << std::endl;
 	else
