@@ -22,29 +22,29 @@ int	main( void ) {
 	try {
 		std::cout << "********** TRY 0 **********" << std::endl << std::endl;
 
-		servant.signForm( *shruform );
-		servant.signForm( *roboform );
-		servant.signForm( *presiform );
+		// servant.signForm( *shruform );
+		// servant.signForm( *roboform );
+		// servant.signForm( *presiform );
 		middle.signForm( *shruform );
-		middle.signForm( *roboform );
+		// middle.signForm( *roboform );
 		middle.gradeUp();
 		middle.signForm( *roboform );
-		middle.signForm( *presiform );
+		// middle.signForm( *presiform );
 		master.signForm( *shruform );
 		master.signForm( *roboform );
 		master.signForm( *presiform );
 
 		std::cout << std::endl;
 
-		servant.execute( *shruform );
-		servant.execute( *roboform );
-		servant.execute( *presiform );
-		middle.execute( *shruform );
-		middle.execute( *roboform );
-		middle.execute( *presiform );
-		master.execute( *shruform );
-		master.execute( *roboform );
-		master.execute( *presiform );
+		// servant.executeForm( *shruform );
+		// servant.executeForm( *roboform );
+		// servant.executeForm( *presiform );
+		middle.executeForm( *shruform );
+		middle.executeForm( *roboform );
+		middle.executeForm( *presiform );
+		master.executeForm( *shruform );
+		master.executeForm( *roboform );
+		master.executeForm( *presiform );
 
 		std::cout << std::endl << "********** SUCCESS **********" << std::endl << std::endl;
 	}

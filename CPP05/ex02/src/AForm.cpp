@@ -79,10 +79,14 @@ const char* AForm::GradeTooHighException::what() const throw(){
 	return "Error: your grade is too High for this action.";
 }
 
+const char* AForm::GradeTooLowException::what() const throw(){
+	return "Error: your grade is too low for this action";
+}
+
 const char* AForm::AlreadySignedException::what() const throw(){
 	return "Form already signed.";
 }
 
-const char* AForm::GradeTooLowException::what() const throw(){
-	return "Error: your grade is too low for this action";
+const char* AForm::NotSignedException::what() const throw(){
+	return "Form not signed.";
 }
