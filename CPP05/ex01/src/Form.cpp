@@ -57,7 +57,7 @@ Form& Form::operator=( const Form& other ){
 }
 
 void Form::beSigned( Bureaucrat b ){
-    if (this->_gradeToSigne > b.getGrade())
+    if (this->_gradeToSigne < b.getGrade())
         throw Form::GradeTooLowException();
     if (this->_isSigned == 1)
         throw Form::AlreadySignedException();

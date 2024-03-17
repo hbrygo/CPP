@@ -7,6 +7,9 @@ PresidentialPardonForm::PresidentialPardonForm( void ) : AForm("PresidentialPard
 
 PresidentialPardonForm::PresidentialPardonForm( std::string target ) : AForm("PresidentialPardonForm", 25, 5) {
     this->_target = target;
+    std::cout << this->_target << " has " << this->_name << " name and need a grade equal or higher than " << this->_gradeToExecute;
+    std::cout << " to be execute and higher or equal to " << this->_gradeToSigne << " to be signed." << std::endl;
+
 }
 
 PresidentialPardonForm::PresidentialPardonForm( const PresidentialPardonForm& other ) : AForm("PresidentialPardonForm", 25, 5) {

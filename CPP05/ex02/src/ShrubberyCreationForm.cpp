@@ -8,6 +8,8 @@ ShrubberyCreationForm::ShrubberyCreationForm( void ) : AForm( "ShrubberyCreation
 
 ShrubberyCreationForm::ShrubberyCreationForm ( std::string target ) : AForm("ShrubberyCreationForm", 145, 137) {
     this->_target = target;
+    std::cout << this->_target << " has " << this->_name << " name and need a grade equal or higher than " << this->_gradeToExecute;
+    std::cout << " to be execute and higher or equal to " << this->_gradeToSigne << " to be signed." << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm ( const ShrubberyCreationForm& other ) : AForm("ShrubberyCreationForm", 145, 137) {

@@ -11,7 +11,7 @@ int	main( void ) {
 	AForm		*roboform = new RobotomyRequestForm( "franken" );
 	AForm		*presiform = new PresidentialPardonForm( "bob" );
 
-	std::cout << std::endl;
+	std::cout << "\n******* Call *******" << std::endl;
 	std::cout << master << std::endl;
 	std::cout << middle << std::endl;
 	std::cout << servant << std::endl;
@@ -22,23 +22,23 @@ int	main( void ) {
 	try {
 		std::cout << "********** TRY 0 **********" << std::endl << std::endl;
 
-		// servant.signForm( *shruform );
-		// servant.signForm( *roboform );
-		// servant.signForm( *presiform );
+		servant.signForm( *shruform );
+		servant.signForm( *roboform );
+		servant.signForm( *presiform );
 		middle.signForm( *shruform );
-		// middle.signForm( *roboform );
+		middle.signForm( *roboform );
 		middle.gradeUp();
 		middle.signForm( *roboform );
-		// middle.signForm( *presiform );
+		middle.signForm( *presiform );
 		master.signForm( *shruform );
 		master.signForm( *roboform );
 		master.signForm( *presiform );
 
 		std::cout << std::endl;
 
-		// servant.executeForm( *shruform );
-		// servant.executeForm( *roboform );
-		// servant.executeForm( *presiform );
+		servant.executeForm( *shruform );
+		servant.executeForm( *roboform );
+		servant.executeForm( *presiform );
 		middle.executeForm( *shruform );
 		middle.executeForm( *roboform );
 		middle.executeForm( *presiform );

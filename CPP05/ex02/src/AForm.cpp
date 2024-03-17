@@ -57,10 +57,10 @@ AForm& AForm::operator=( const AForm& other ){
 }
 
 void AForm::beSigned( Bureaucrat b ){
-    if (this->_gradeToSigne > b.getGrade())
-        throw AForm::GradeTooLowException();
     if (this->_isSigned == 1)
         throw AForm::AlreadySignedException();
+    if (this->_gradeToSigne < b.getGrade())
+        throw AForm::GradeTooLowException();
     this->_isSigned = 1;
     std::cout << "Form has been signed." << std::endl;
 }

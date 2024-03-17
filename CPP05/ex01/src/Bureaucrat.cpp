@@ -45,21 +45,23 @@ void Bureaucrat::gradeDown(){
 	if (this->_grade >= 150)
 		throw Bureaucrat::GradeTooLowException();
 	this->_grade++;
-	std::cout << this->_name << " grade down" << std::endl;
+	std::cout << this->_name << " grade down from " << this->_grade - 1 << " to " << this->_grade << std::endl;
 }
 
 void Bureaucrat::gradeUp(){
 	if (this->_grade <= 1)
 		throw Bureaucrat::GradeTooHighException();
 	this->_grade--;
-	std::cout << this->_name << " grade up" << std::endl;
+	std::cout << this->_name << " grade up from " << this->_grade + 1 << " to " << this->_grade << std::endl;
 }
 
 void Bureaucrat::signForm( Form f ) const{
-	if (f.getSigned() == 1)
-		std::cout << this->_name << " signed " << f.getName() << std::endl;
-	else
-		std::cout << this->_name << " couldn't sign " << f.getName() << " because he has aqua poney." << std::endl;
+	try {
+		f.beSigned( *this );
+	}
+	catch(std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 std::ostream& operator<<(std::ostream& f, Bureaucrat const& b)
