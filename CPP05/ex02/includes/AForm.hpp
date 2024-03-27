@@ -6,7 +6,7 @@
 class Bureaucrat;
 
 class AForm{
-    protected:
+    private:
         const std::string _name;
         bool _isSigned;
         const int _gradeToSigne;
@@ -19,7 +19,7 @@ class AForm{
         AForm ( const AForm& other );
         virtual ~AForm();
         AForm& operator=( const AForm& other );
-        void beSigned( Bureaucrat b );
+        void beSigned( const Bureaucrat& b );
 
         bool getSigned( void ) const;
         std::string getName( void ) const;

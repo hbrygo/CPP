@@ -7,14 +7,16 @@
 class Animal{
 	protected:
 		std::string _type;
-		Brain* _brain;
+
 	public:
 		Animal( void );
-		virtual ~Animal();
 		Animal( const Animal& other );
+		virtual ~Animal();
 		Animal& operator=( const Animal& other );
+
 		std::string getType( void ) const;
 		virtual void makeSound( void ) const = 0;
+		virtual Brain* getBrain() const;
 };
 
 #endif

@@ -56,7 +56,7 @@ AForm& AForm::operator=( const AForm& other ){
     return *this;
 }
 
-void AForm::beSigned( Bureaucrat b ){
+void AForm::beSigned( const Bureaucrat& b ){
     if (this->_isSigned == 1)
         throw AForm::AlreadySignedException();
     if (this->_gradeToSigne < b.getGrade())

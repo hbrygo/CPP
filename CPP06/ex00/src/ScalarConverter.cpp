@@ -26,7 +26,7 @@ static void convertToChar( double num ){
 	if (!isprint(static_cast<char>(num)))
 		std::cout << "Char: Is not printable\n";
 	else
-		std::cout << "Char: " << static_cast<char>(num) << "\n";
+		std::cout << "Char: '" << static_cast<char>(num) << "'\n";
 }
 
 static void convertToFloat( double num ){
@@ -39,28 +39,35 @@ void ScalarConverter::convert( std::string str ){
 		char* endPtr = nullptr;
 		const char* str2 = str.c_str();
 		double num;
-		if (str.length() == 1 && isascii(str[0])){
+		if (str.length() == 1 && isascii(str[0])) {
 			// std::cout << "str2: " << str2 << " len: " << str.length() << std::endl;
 			int valueInt = str[0];
 			num = valueInt;
-		}
-		else if (str.back() == '.') {
-			std::cout << "Error." << std::endl;
-			return ;
 		}
 		else if (str.back() == 'f') {
 			str.back() = '\0';
 			num = strtod(str2, &endPtr);
 		}
+		else if (!isnum(str.back())) {
+			std::cout << "Error." << std::endl;
+			return ;
+		}
 		else{
 		    num = strtod(str2, &endPtr);
 		}
 		// std::cout << "num: " << num << std::endl;
-		if (num > 2147483647){
+		if (num != num) {
+			std::cout << "Int: nan" << std::endl;
+			std::cout << "Char: nan" << std::endl;
+			std::cout << "Float: nan" << std::endl;
+			std::cout << "Double: nan" << std::endl;
+			return ;
+		}
+		else if (num > 2147483647) {
 			std::cout << "Int to High." << std::endl;
 			return ;
 		}
-		else if (num < -2147483648){
+		else if (num < -2147483648) {
 			std::cout << "Int to low." << std::endl;
 			return ;
 		}

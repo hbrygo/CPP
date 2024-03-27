@@ -1,14 +1,9 @@
 #include "../includes/RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm( void ) : AForm("RobotomyRequestForm", 72, 45) {
-    std::cout << "Default constructor RobotomyRequestForm called" << std::endl;
-    this->_target = "Default";
-}
-
 RobotomyRequestForm::RobotomyRequestForm( std::string target ) : AForm("RobotomyRequestForm", 72, 45) {
     this->_target = target;
-    std::cout << this->_target << " has " << this->_name << " name and need a grade equal or higher than " << this->_gradeToExecute;
-    std::cout << " to be execute and higher or equal to " << this->_gradeToSigne << " to be signed." << std::endl;
+    std::cout << this->_target << " has " << this->getName() << " name and need a grade equal or higher than " << this->getGradeToExecut();
+    std::cout << " to be execute and higher or equal to " << this->getGradeToSign() << " to be signed." << std::endl;
 
 }
 
@@ -27,9 +22,9 @@ RobotomyRequestForm& RobotomyRequestForm::operator=( const RobotomyRequestForm& 
 }
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const{
-    if (this->_isSigned == 0)
+    if (this->getSigned() == 0)
         throw AForm::NotSignedException();
-    if (executor.getGrade() > this->_gradeToExecute)
+    if (executor.getGrade() > this->getGradeToExecut())
         throw AForm::GradeTooLowException();
     std::cout << "Drill drill drill" << std::endl;
     srand((unsigned int) time(NULL));

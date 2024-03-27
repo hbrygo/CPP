@@ -1,8 +1,12 @@
-SRCS	=	
+SRCS	=	src/main.cpp \
+			src/A.cpp \
+			src/B.cpp \
+			src/C.cpp \
+			src/Base.cpp
 
 OBJS	= ${SRCS:.cpp=.o}
 INCS	= includes
-NAME	= AMateria
+NAME	= NAME
 CC		= c++
 RM		= rm -rf
 CFLAGS	= -Wall -Wextra -Werror -g -std=c++98

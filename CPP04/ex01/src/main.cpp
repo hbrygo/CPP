@@ -4,63 +4,55 @@
 #include <iostream>
 
 int	main( void ) {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	const WrongAnimal* k = new WrongCat();
+	const Animal	*(animals[4]) = {new Dog(), new Cat(), new Cat(), new Dog()};
 	std::cout << std::endl;
-	std::cout << "*************Call type**************" << std::endl;
-	std::cout << meta->getType() << " " << std::endl;
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	std::cout << k->getType() << " " << std::endl;
-	std::cout << std::endl;
-	std::cout << "*************Call sound*************" << std::endl;
-	meta->makeSound();
-	j->makeSound();
-	i->makeSound(); //will output the cat sound!
-	k->makeSound();
+	Brain			*brain;
 
-	std::cout << std::endl;
-	std::cout << "*************Delete all*************" << std::endl;
-	delete meta;
-	delete i;
-	delete j;
-	delete k;
+	brain = animals[1]->getBrain();
+	if (brain) {
+		brain->addIdea( "Pass this cpp." );
+		brain->addIdea( "Lick my paw." );
+		brain->setIdea( 3, "Learn some kung fu." );
+	}
+
+	Animal	*copycat = new Cat(*(Cat *)(animals[1]));
+
+	if (brain) {
+		brain->addIdea( "yoghurt." );
+		brain->setIdea( 0, "Don't get copied." );
+	}
+	brain = copycat->getBrain();
+	if (brain) {
+		brain->addIdea( "cereals." );
+	}
 	std::cout << std::endl;
 
-	const Animal	*lucy = new Animal();
-	const Animal	*og = new Dog(*(Dog *)lucy);
-	const Animal	*cpy = new Dog(*(Dog *)og);
-	const Animal	*cpyter = new Animal(*og);
-	const Animal	*cpydog = new Animal(*(Dog *)og);
-	const Animal	*cpycat = new Animal(*(Cat *)og);
-	const Animal	*catcpy = new Cat(*(Cat *)og);
-	// const Animal	*catfail = new Cat(*og); //this doesn't work
-
-	std::cout << std::endl;
-	std::cout << lucy->getType() << " lucy -> ";
-	lucy->makeSound();
-	std::cout << og->getType() << " og -> ";
-	og->makeSound();
-	std::cout  << cpy->getType() << " cpy -> ";
-	cpy->makeSound();
-	std::cout  << cpyter->getType() << " cpyter -> ";
-	cpyter->makeSound();
-	std::cout  << cpydog->getType() << " cpydog -> ";
-	cpydog->makeSound();
-	std::cout  << cpycat->getType() << " cpycat -> ";
-	cpycat->makeSound();
-	std::cout  << catcpy->getType() << " catcpy -> ";
-	catcpy->makeSound();
+	for (int i = 0; i < 4; ++i) {
+		brain = animals[1]->getBrain();
+		if (brain) {
+			std::cout << i << " original : " << brain->getIdea( i ) << std::endl;
+		} else {
+			std::cout << "Error, brain not found." << std::endl;
+		}
+		brain = copycat->getBrain();
+		if (brain) {
+			std::cout << "      copy : " << brain->getIdea( i ) << std::endl;
+		} else {
+			std::cout << "Error, brain not found." << std::endl;
+		}
+	}
 	std::cout << std::endl;
 	
-	delete lucy;
-	delete og;
-	delete cpy;
-	delete cpyter;
-	delete cpydog;
-	delete cpycat;
-	delete catcpy;
+	for (int i = 0; i < 4; i++) {
+		std::cout << "Animal " << i << " is a " << animals[i]->getType() << std::endl;
+		animals[i]->makeSound();
+	}
+	std::cout << std::endl;
+	
+	for (int i = 0; i < 4; i++) {
+		delete animals[i];
+	}
+	std::cout << std::endl;
+	delete copycat;
 	return (0);
 }

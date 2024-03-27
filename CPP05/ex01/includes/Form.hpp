@@ -19,7 +19,7 @@ class Form{
         Form ( const Form& other );
         ~Form();
         Form& operator=( const Form& other );
-        void beSigned( Bureaucrat b );
+        void beSigned( const Bureaucrat& b );
 
         bool getSigned( void ) const;
         std::string getName( void ) const;

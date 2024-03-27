@@ -8,7 +8,7 @@ int	main( void ) {
 
 	try {
 		std::cout << "********** TRY 0 **********" << std::endl << std::endl;
-		Form		form( "random request", 46, 4 );
+		Form		form( "random request", 48, 4 );
 
 		std::cout << std::endl;
 		std::cout << master << std::endl;

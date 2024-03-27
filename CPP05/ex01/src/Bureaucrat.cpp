@@ -55,7 +55,7 @@ void Bureaucrat::gradeUp(){
 	std::cout << this->_name << " grade up from " << this->_grade + 1 << " to " << this->_grade << std::endl;
 }
 
-void Bureaucrat::signForm( Form f ) const{
+void Bureaucrat::signForm( Form& f ) const{
 	try {
 		f.beSigned( *this );
 	}
