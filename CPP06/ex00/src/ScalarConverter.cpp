@@ -30,7 +30,10 @@ static void convertToChar( double num ){
 }
 
 static void convertToFloat( double num ){
-	std::cout << "Float: " << static_cast<float>(num) << "f\n";
+	if (static_cast<int>(num) == num)
+		std::cout << "Float: " << static_cast<float>(num) << ".0f\n";
+	else
+		std::cout << "Float: " << static_cast<float>(num) << "f\n";
 }
 
 void ScalarConverter::convert( std::string str ){
@@ -44,13 +47,9 @@ void ScalarConverter::convert( std::string str ){
 			int valueInt = str[0];
 			num = valueInt;
 		}
-		else if (str.back() == 'f') {
+		else if (str.back() == 'f' && str.find('.') != std::string::npos) {
 			str.back() = '\0';
 			num = strtod(str2, &endPtr);
-		}
-		else if (!isnum(str.back())) {
-			std::cout << "Error." << std::endl;
-			return ;
 		}
 		else{
 		    num = strtod(str2, &endPtr);
@@ -63,12 +62,44 @@ void ScalarConverter::convert( std::string str ){
 			std::cout << "Double: nan" << std::endl;
 			return ;
 		}
+		else if (str == "+inf" || str == "+inff") {
+			std::cout << "Int: Is to High" << std::endl;
+			std::cout << "Char: Is not printable" << std::endl;
+			std::cout << "Float: +inff" << std::endl;
+			std::cout << "Double: +inf" << std::endl;
+			return ;
+		}
+		else if (str == "-inf" || str == "-inff") {
+			std::cout << "Int: Is to low" << std::endl;
+			std::cout << "Char: Is not printable" << std::endl;
+			std::cout << "Float: -inff" << std::endl;
+			std::cout << "Double: -inf" << std::endl;
+			return ;
+		}
 		else if (num > 2147483647) {
 			std::cout << "Int to High." << std::endl;
+			std::cout << "Char: Is not printable" << std::endl;
+			if (static_cast<int>(num) == num)
+				std::cout << "Float: " << static_cast<float>(num) << ".0f" << std::endl;
+			else
+				std::cout << "Float: " << static_cast<float>(num) << "f" << std::endl;
+			if (static_cast<int>(num) == num)
+				std::cout << "Double: " << num << ".0" << std::endl;
+			else
+				std::cout << "Double: " << num << std::endl;
 			return ;
 		}
 		else if (num < -2147483648) {
 			std::cout << "Int to low." << std::endl;
+			std::cout << "Char: Is not printable" << std::endl;
+			if (static_cast<int>(num) == num)
+				std::cout << "Float: " << static_cast<float>(num) << ".0f" << std::endl;
+			else
+				std::cout << "Float: " << static_cast<float>(num) << "f" << std::endl;
+			if (static_cast<int>(num) == num)
+				std::cout << "Double: " << num << ".0" << std::endl;
+			else
+				std::cout << "Double: " << num << std::endl;
 			return ;
 		}
 		if (endPtr != nullptr && *endPtr != '\0') {
@@ -78,7 +109,10 @@ void ScalarConverter::convert( std::string str ){
 		convertToInt(num);
 		convertToChar(num);
 		convertToFloat(num);
-		std::cout << "Double: " << num << std::endl;
+		if (static_cast<int>(num) == num)
+			std::cout << "Double: " << num << ".0" << std::endl;
+		else
+			std::cout << "Double: " << num << std::endl;
 	}
 	catch(const std::exception& e)
 	{

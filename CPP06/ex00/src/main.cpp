@@ -16,12 +16,14 @@ int	main( int ac, char **av ) {
 	std::string	arg = av[1];
 	if (arg == "-c") {
 		test( "0" );
+		test( "0.56" );
 		test( "*" );
 		test( "inf" );
 		test( "+inf" );
 		test( "0." );
 		test( "05" );
-		test( "2 5" );
+		test( "05a" );
+		test( "2 5ß" );
 		test( "-846f" );
 		test( "nan" );
 		test( "**" );
