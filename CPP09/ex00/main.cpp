@@ -97,7 +97,7 @@ void find_input_date(std::ifstream& file, std::map<std::string, float> myMap){
         } else if (it != myMap.end()) {
             if (value * it->second < 0)
                 std::cout << "Error: not a positive number." << std::endl;
-            else if (value * it->second > 1000)
+            else if (value > 1000)
                 std::cout << "Error: too large a number." << std::endl;
             else
                 std::cout << date << " => " << value << " = " << value * it->second << std::endl;
@@ -107,7 +107,7 @@ void find_input_date(std::ifstream& file, std::map<std::string, float> myMap){
                 --lowerBound;
                 if (value * lowerBound->second < 0)
                     std::cout << "Error: not a positive number." << std::endl;
-                else if (value * lowerBound->second > 1000)
+                else if (value > 1000)
                     std::cout << "Error: too large a number." << std::endl;
                 else
                     std::cout << date << " => " << value << " = " << value * lowerBound->second << std::endl;
