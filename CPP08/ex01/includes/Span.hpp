@@ -20,8 +20,16 @@ class Span {
 
         void addNumber( int num );
         void display();
-        int shortestSpan();
-        int longestSpan();
+        unsigned int shortestSpan();
+        unsigned int longestSpan();
+        template <typename InputIterator>
+        void fillSpan(InputIterator begin, InputIterator end){
+            for (InputIterator it = begin; it != end; ++it) {
+                if (this->_number.size() >= this->_n)
+                    throw std::length_error("To many element for add a new value");
+                this->_number.push_back(*it);
+            }
+        }
 };
 
 std::ostream& operator<<(std::ostream& f, Span& s);

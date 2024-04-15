@@ -33,7 +33,7 @@ void Span::display(){
     }
 }
 
-int Span::shortestSpan(){
+unsigned int Span::shortestSpan(){
     if (this->_number.size() <= 1)
         throw std::logic_error("Not enough value to calculate a size");
     std::vector<int> range;
@@ -50,7 +50,7 @@ int Span::shortestSpan(){
     return *std::min_element(range.begin(), range.end());
 }
 
-int Span::longestSpan(){
+unsigned int Span::longestSpan(){
     if (this->_number.size() <= 1)
         throw std::logic_error("Not enough value to calculate a size");
     std::vector<int> range;
