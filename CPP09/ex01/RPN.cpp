@@ -1,24 +1,24 @@
 #include <stack>
 #include <iostream>
 
-int execute(char **argv){
+int execute(char *argv){
     std::stack<int> value;
-    for (int i = 0; argv[1][i]; i++){
+    for (int i = 0; argv[i]; i++){
         int sign = 1;
-        if (argv[1][i] == ' ')
+        if (argv[i] == ' ')
             i++;
-        if (argv[1][i] == '-' && argv[1][i + 1] && argv[1][i + 1] <= '9' && argv[1][i + 1] >= '0'){
+        if (argv[i] == '-' && argv[i + 1] && argv[i + 1] <= '9' && argv[i + 1] >= '0'){
             sign = -1;
             i++;
         }
-        if (argv[1][i] >= '0' && argv[1][i] <= '9')
-            value.push((argv[1][i] - '0') * sign);
-        else if (argv[1][i] == '*' || argv[1][i] == '-' || argv[1][i] == '+' || argv[1][i] == '/') {
+        if (argv[i] >= '0' && argv[i] <= '9')
+            value.push((argv[i] - '0') * sign);
+        else if (argv[i] == '*' || argv[i] == '-' || argv[i] == '+' || argv[i] == '/') {
             if (value.size() < 2) {
                 std::cout << "Error" << std::endl;
                 return 1;
             }
-            char op = argv[1][i];
+            char op = argv[i];
             int value2 = value.top();
             value.pop();
             int value1 = value.top();
