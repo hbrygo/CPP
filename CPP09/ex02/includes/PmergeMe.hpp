@@ -8,10 +8,4 @@
 #include <utility>
 #include <ctime>
 
-template<typename T>
-void sort(T& valueToSort);
-
-template<typename T>
-void display(T valueToSort);
-
 #endif

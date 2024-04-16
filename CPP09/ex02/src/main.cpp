@@ -14,6 +14,13 @@ int checkArg(int argc, char **argv){
         if (str.find_first_not_of("0123456789-") != std::string::npos) {
             return 1;
         }
+		int	neg = 0;
+		for (int j = 0; argv[i][j]; j++){
+			if (argv[i][j] == '-')
+				neg++;
+		}
+		if (neg > 1)
+			return 1;
     }
     return 0;
 }
@@ -72,8 +79,8 @@ void sort(T& begin, T& end){
 	typename std::iterator_traits<T>::difference_type length = std::distance(begin, end);
     if (length > 1) {
         T middle = std::next(begin, length / 2);
-        sortElem(begin, middle);
-        sortElem(middle, end);
+        sort(begin, middle);
+        sort(middle, end);
         mergeAndSort(begin, middle, end);
     }
 }
@@ -113,12 +120,12 @@ int main(int argc, char **argv){
 	}
 	{
 		std::clock_t start = std::clock();
-		display(valueDeque, "Before sort");
+		// display(valueDeque, "Before sort");
 		algo(valueDeque);
-		display(valueDeque, "After sort");
+		// display(valueDeque, "After sort");
 		std::clock_t end = std::clock();
 		double elapsed_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
-		std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector :" << elapsed_time << " microsecondes" << std::endl;
+		std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque :" << elapsed_time << " microsecondes" << std::endl;
 	}
     return 0;
 }
