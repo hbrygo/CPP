@@ -5,6 +5,13 @@
 #include <sstream>
 #include <string>
 
+class occurenceNotFound: public std::exception {
+    public:
+        virtual const char* what() const throw() {
+            return "Error: out of the array";
+        }
+};
+
 int file_to_map(std::ifstream& file, std::map<std::string, float>& myMap, char sep){
     std::string line;
     std::getline(file, line);
@@ -31,9 +38,17 @@ int verif_map(std::map<std::string, float>& myMap){
     std::map<std::string, float>::const_iterator it = myMap.begin();
     for (; it != myMap.end(); ++it){
         std::string date = it->first;
-        int year = stoi(date.substr(0, 4));
-        int month = stoi(date.substr(5, 2));
-        int day = stoi(date.substr(8, 10));
+        int year;
+        int month;
+        int day;
+        try {
+            year = stoi(date.substr(0, 4));
+            month = stoi(date.substr(5, 2));
+            day = stoi(date.substr(8, 10));
+	    }
+        catch ( std::exception &e) {
+            std::cout << e.what() << std::endl;
+        }
         if (year < 2009)
             return 1;
         if (month < 1 || month > 12)
@@ -64,9 +79,17 @@ void find_input_date(std::ifstream& file, std::map<std::string, float> myMap){
             return ;
         std::string date = line.substr(0, pos);
         float   value = stof(line.substr(pos + 1));
-        int year = stoi(date.substr(0, line.find('-')));
-        int month = stoi(date.substr(5, 2));
-        int day = stoi(date.substr(8, 10));
+        int year;
+        int month;
+        int day;
+        try {
+            year = stoi(date.substr(0, line.find('-')));
+            month = stoi(date.substr(5, 2));
+            day = stoi(date.substr(8, 10));
+	    }
+        catch ( std::exception &e) {
+            std::cout << e.what() << std::endl;
+        }
         if (date.find_first_not_of("0123456789-") != std::string::npos) {
             badInput = 1;
         }
